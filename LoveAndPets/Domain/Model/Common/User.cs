@@ -5,7 +5,7 @@ namespace LoveAndPets.Domain.Model.Common
     /// <summary>
     /// Пользователь
     /// </summary>
-    public class Users : IdentityUser<int>
+    public class User : IdentityUser<int>
     {
         /// <summary>
         /// Профиль пользователя
