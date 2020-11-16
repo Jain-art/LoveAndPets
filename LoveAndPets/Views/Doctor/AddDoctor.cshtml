@@ -1,0 +1,46 @@
+﻿@model NewDoctorViewModel
+@{ViewData["Title"] = "Добавить нового доктора";
+    Layout = "_LoginLayout";
+}
+
+<form asp-action="AddDoctor" method="post">
+    <div class="card-body">
+
+        <div class="form-group bmd-form-group">
+            <label asp-for="Surname" class="bmd-label-floating"></label>
+            <input asp-for="Surname" class="form-control" placeholder="Фамилия доктора ">
+            <span asp-validation-for="Surname" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group bmd-form-group">
+            <label asp-for="FirstName" class="bmd-label-floating"></label>
+            <input asp-for="FirstName" class="form-control" placeholder="Имя доктора">
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group bmd-form-group">
+            <label asp-for="Patronymic" class="bmd-label-floating"></label>
+            <input asp-for="Patronymic" class="form-control" placeholder="Отчество доктора">
+            <span asp-validation-for="Patronymic" class="text-danger"></span>
+        </div>
+
+        @{ List<DoctorItemViewModel> Serviсes = (List<DoctorItemViewModel>)ViewBag.ListServiseName; }
+
+        <select asp-for="Services">
+            @foreach (var item in Serviсes)
+            {
+                <option value="@item.Service">@item.ServiceName </option>
+            }
+        </select>
+
+        </div>
+        <div class="card-footer justify-content-center">
+            <button type="submit" class="btn btn-primary btn-fill btn-lg">Сохранить изменения</button>
+        </div>
+</form>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationPost")
+}

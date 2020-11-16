@@ -20,7 +20,11 @@ namespace LoveAndPets.Domain.Model.Common
         /// Отчество пользователя
         /// </summary>
         public string Patronymic { get; set; }
-      
+
+        public string FullName
+        {
+            get => FirstName + "" + Surname+"" + Patronymic;
+        }
 
 
     }

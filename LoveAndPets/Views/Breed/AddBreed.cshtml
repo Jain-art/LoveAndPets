@@ -1,0 +1,29 @@
+﻿@model NewBreedViewModel
+@{ViewData["Title"] = "Добавить новую породу животного";
+    Layout = "_LoginLayout";
+}
+
+<form asp-action="AddBreed" method="post">
+    <div class="card-body">
+
+        <div class="form-group bmd-form-group">
+            <label asp-for="BreedName" class="bmd-label-floating"></label>
+            <input asp-for="BreedName" class="form-control" placeholder="Отчество доктора">
+            <span asp-validation-for="BreedName" class="text-danger"></span>
+        </div>
+
+        @{ List<BreedItemViewModel> Animal = (List<BreedItemViewModel>)ViewBag.ListBreedName; }
+
+        <select asp-for="Animals">
+            @foreach (var item in Animal)
+            {
+                <option value="@item.Animals">@item.TypeName </option>
+            }
+        </select>
+
+
+        <div class="card-footer justify-content-center">
+            <button type="submit" class="btn btn-primary btn-fill btn-lg">Сохранить изменения</button>
+        </div>
+</form>
+

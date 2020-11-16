@@ -1,4 +1,7 @@
-﻿namespace LoveAndPets.Model.Common
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
+
+namespace LoveAndPets.Model.Common
 {
     /// <summary>
     /// Интерфейс модели сущности предметной области
@@ -13,6 +16,7 @@
         /// <summary>
         /// Идентификатор сущности
         /// </summary>
-        public virtual long Id { get; set; }
+        
+        public virtual long Entitys { get; set; }
     }
 }
