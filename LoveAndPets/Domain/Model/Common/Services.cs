@@ -1,4 +1,5 @@
 ﻿using LoveAndPets.Model.Common;
+using System;
 
 namespace LoveAndPets.Domain.Model.Common
 {
@@ -9,5 +10,6 @@ namespace LoveAndPets.Domain.Model.Common
         /// </summary>
         public string ServiceName { get; set; }
 
+       
     }
 }

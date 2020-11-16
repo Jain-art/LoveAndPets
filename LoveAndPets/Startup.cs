@@ -12,6 +12,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using AnimalDbContext = LoveAndPets.Domain.DB.AnimalDbContext;
+using Microsoft.EntityFrameworkCore.Design;
+using LoveAndPets.Infrastructure;
+using LoveAndPets.Infrastructure.Guarantors;
+using LoveAndPets.Infrastructure.Guarantiors;
 
 namespace LoveAndPets
 {
@@ -27,13 +32,12 @@ namespace LoveAndPets
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DbContext>(options =>
-                options.UseNpgsql("Server=127.0.0.1;Port=5432;User Id=postgres;Password=1234;Database=Blog;"));
+            services.AddDbContext<AnimalDbContext>(options =>
+                options.UseNpgsql("Server=127.0.0.1;Port=5432;User Id=postgres;Password=1234;Database=LoveAndPets;"));
 
             services.AddControllersWithViews();
 
-
-            services.AddControllersWithViews();
+            
             services.AddIdentity<User, IdentityRole<int>>(options =>
             {
                 options.Password.RequireLowercase = false;
@@ -41,17 +45,38 @@ namespace LoveAndPets
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireDigit = false;
 
-            }).AddEntityFrameworkStores<DbContext>();
+            }).AddEntityFrameworkStores<AnimalDbContext>();
 
-            services.AddControllersWithViews();
+            var sevisceProvider = services.BuildServiceProvider();
+            var guarantor = new SeedDataGuarantor(sevisceProvider);
+            guarantor.EnsureAsync();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseRouting();
-            app.UseAuthentication();
-            app.UseAuthorization();
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var guarantors = scope.ServiceProvider.GetServices<IStartupPreConditionGuarantor>();
+                try
+                {
+                    Console.WriteLine("Startup guarantors sterted");
+                    foreach (var guarantor in guarantors)
+
+                        guarantor.Ensure(scope.ServiceProvider);
+
+                    Console.WriteLine("Startup guarantors executed successful");
+                }
+                catch (StartupPreConditionException)
+                {
+                    Console.WriteLine("Startup guarators failed");
+                    throw;
+                }
+
+            }
+            //app.UseRouting();
+            //app.UseAuthentication();
+            //app.UseAuthorization();
 
             if (env.IsDevelopment())
             {
@@ -67,9 +92,10 @@ namespace LoveAndPets
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
