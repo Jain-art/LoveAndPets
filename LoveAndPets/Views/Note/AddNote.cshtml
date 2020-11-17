@@ -1,0 +1,34 @@
+﻿@model NewNoteViewModel
+@{ViewData["Title"] = "Записаться на прием";
+    Layout = "_LoginLayout";
+}
+
+<form asp-action="AddNote" method="post">
+    <div class="card-body">
+        <!--
+            <div class="form-group bmd-form-group">
+                <label asp-for="Surname" class="bmd-label-floating"></label>
+                <input asp-for="Surname" class="form-control" placeholder="Фамилия доктора ">
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+        -->
+
+
+        @{ List<NoteItemViewModel> DoctorAndService = (List<NoteItemViewModel>)ViewBag.ListDoctorAndService; }
+
+        <select asp-for="Doctors">
+            @foreach (var item in DoctorAndService)
+            {
+                <option value="@item.Doctor">@item.DoctorName </option>
+            }
+        </select>
+
+    </div>
+    <div class="card-footer justify-content-center">
+        <button type="submit" class="btn btn-primary btn-fill btn-lg">Сохранить изменения</button>
+    </div>
+</form>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationPost")
+}
