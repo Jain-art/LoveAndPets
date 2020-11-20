@@ -25,7 +25,7 @@ namespace LoveAndPets.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddServiсe(NewServiсeViewModel model)
+        public IActionResult AddService(NewServiсeViewModel model)
         {
             if (!ModelState.IsValid) return View(model);
 
@@ -39,7 +39,7 @@ namespace LoveAndPets.Controllers
             _animalDbContext.SaveChanges();
 
 
-            return View();
+            return View(model);
         }
     }
 }
