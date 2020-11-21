@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace LoveAndPets.Migrations
 {
-    public partial class init : Migration
+    public partial class initv : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -285,6 +285,7 @@ namespace LoveAndPets.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ServiceId = table.Column<long>(nullable: false),
                     DoctorId = table.Column<long>(nullable: false),
                     UserId = table.Column<long>(nullable: false),
                     PetId = table.Column<long>(nullable: false),
@@ -309,6 +310,12 @@ namespace LoveAndPets.Migrations
                         name: "FK_Note_Pet_PetId",
                         column: x => x.PetId,
                         principalTable: "Pet",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Note_Service_ServiceId",
+                        column: x => x.ServiceId,
+                        principalTable: "Service",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -380,6 +387,11 @@ namespace LoveAndPets.Migrations
                 name: "IX_Note_PetId",
                 table: "Note",
                 column: "PetId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Note_ServiceId",
+                table: "Note",
+                column: "ServiceId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Pet_AnimalId",

@@ -127,6 +127,8 @@ namespace LoveAndPets.Domain.DB
             {
                 b.ToTable("Note");
                 EntityId(b);
+                b.Property(x => x.ServicesEntitys)
+                .HasColumnName("ServiceId").IsRequired();
                 b.Property(x => x.DoctorsEntitys)
                 .HasColumnName("DoctorId").IsRequired();
                 b.Property(x => x.EmployeeEntitys)
