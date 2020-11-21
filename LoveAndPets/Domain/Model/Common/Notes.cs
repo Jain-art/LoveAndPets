@@ -13,9 +13,17 @@ namespace LoveAndPets.Domain.Model.Common
     public class Notes: Entity
     {
         /// <summary>
+        /// Id услуги, в которой клиент нуждается
+        /// </summary>
+
+        public long ServicesEntitys { get; set; }
+        [ForeignKey("ServicesEntitys")]
+        public Services Services { get; set; }
+
+        /// <summary>
         /// Id доктора, к которому записался клиент
         /// </summary>
-           
+
         public long DoctorsEntitys { get; set; }
         [ForeignKey("DoctorsEntitys")]
         public Doctors Doctors { get; set; }

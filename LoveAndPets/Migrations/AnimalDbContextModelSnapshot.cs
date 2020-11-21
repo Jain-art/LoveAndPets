@@ -143,6 +143,10 @@ namespace LoveAndPets.Migrations
                         .HasColumnName("PetId")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("ServicesEntitys")
+                        .HasColumnName("ServiceId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Entitys")
                         .HasAnnotation("Npgsql:Serial", true);
 
@@ -151,6 +155,8 @@ namespace LoveAndPets.Migrations
                     b.HasIndex("EmployeeEntitys");
 
                     b.HasIndex("PetsEntitys");
+
+                    b.HasIndex("ServicesEntitys");
 
                     b.ToTable("Note");
                 });
@@ -447,6 +453,12 @@ namespace LoveAndPets.Migrations
                     b.HasOne("LoveAndPets.Domain.Model.Common.Pets", "Pets")
                         .WithMany()
                         .HasForeignKey("PetsEntitys")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LoveAndPets.Domain.Model.Common.Services", "Services")
+                        .WithMany()
+                        .HasForeignKey("ServicesEntitys")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
