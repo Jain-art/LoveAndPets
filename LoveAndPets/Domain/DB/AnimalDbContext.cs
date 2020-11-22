@@ -2,6 +2,10 @@
 using LoveAndPets.Model.Common;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+<<<<<<< HEAD
+=======
+//using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+>>>>>>> a67234ef46a3b6ee2f739398c8a60f24099773bc
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -36,8 +40,11 @@ namespace LoveAndPets.Domain.DB
 
         public DbSet<Breeds> Breeds { get; set; }
 
+<<<<<<< HEAD
         public DbSet<Pets> Pets { get; set; }
 
+=======
+>>>>>>> a67234ef46a3b6ee2f739398c8a60f24099773bc
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -46,7 +53,13 @@ namespace LoveAndPets.Domain.DB
             {
                 x.HasOne(y => y.Employee)
                 .WithOne()
+<<<<<<< HEAD
                 .IsRequired(true);
+=======
+                //.HasForeignKey<User>("EmployeeId")
+                .IsRequired(true);
+               // x.HasIndex("EmployeeId").IsUnique(true);
+>>>>>>> a67234ef46a3b6ee2f739398c8a60f24099773bc
             });
             #region Pets
             modelBuilder.Entity<Pets>(b =>
@@ -139,7 +152,25 @@ namespace LoveAndPets.Domain.DB
             });
             #endregion
 
+<<<<<<< HEAD
             }
+=======
+            /*
+            #region BlogPost
+            modelBuilder.Entity<BlogPost>(b =>
+            {
+                b.ToTable("BlogPosts");
+                EntityId(b);
+                b.Property(x => x.Created).HasColumnName("Created")
+                .IsRequired();
+                b.Property(x => x.Title).HasColumnName("Date")
+                .IsRequired();
+                b.HasOne(x => x.Owner).WithMany().IsRequired();
+            });
+            #endregion
+            */
+        }
+>>>>>>> a67234ef46a3b6ee2f739398c8a60f24099773bc
         
         private static void EntityId<TEntity>(EntityTypeBuilder<TEntity> builder)
             where TEntity : Entity

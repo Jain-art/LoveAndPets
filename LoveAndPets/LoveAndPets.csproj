@@ -27,4 +27,11 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
   </ItemGroup>
 
+<<<<<<< HEAD
+=======
+  <ItemGroup>
+    <Folder Include="Views\Новая папка\" />
+  </ItemGroup>
+
+>>>>>>> a67234ef46a3b6ee2f739398c8a60f24099773bc
 </Project>

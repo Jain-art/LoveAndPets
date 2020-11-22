@@ -1,15 +1,30 @@
+<<<<<<< HEAD
 ﻿using LoveAndPets.Domain.DB;
 using LoveAndPets.Domain.Model.Common;
 using LoveAndPets.Security;
 using LoveAndPets.ViewModels.Account;
 using Microsoft.AspNetCore.Authentication;
+=======
+﻿using Microsoft.AspNetCore.Authentication;
+>>>>>>> a67234ef46a3b6ee2f739398c8a60f24099773bc
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+<<<<<<< HEAD
 
+=======
+using LoveAndPets.Domain.Model;
+using LoveAndPets.Exceptions.Http;
+using LoveAndPets.Security;
+using LoveAndPets.Domain.Model.Common;
+using LoveAndPets.Domain.DB;
+using LoveAndPets.ViewModels.Account;
+//using LoveAndPets.ViewModels.Account;
+//using LoveAndPets.ViewModels.Account;
+>>>>>>> a67234ef46a3b6ee2f739398c8a60f24099773bc
 
 namespace LoveAndPets.Controllers
 {
