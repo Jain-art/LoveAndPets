@@ -1,9 +1,4 @@
-﻿using LoveAndPets.Domain.Model.Common;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace LoveAndPets.ViewModels.Account
 {
@@ -12,11 +7,11 @@ namespace LoveAndPets.ViewModels.Account
     /// </summary>
     public class NewDoctorViewModel
     {
-        
+
         /// <summary>
         /// Имя доктора
         /// </summary>
-        [Required(ErrorMessage ="HH")]
+        [Required(ErrorMessage = "HH")]
         [Display(Name = "Имя доктора")]
         public string FirstName { get; set; }
 
@@ -33,7 +28,7 @@ namespace LoveAndPets.ViewModels.Account
         [Required]
         [Display(Name = "Отчество доктора")]
         public string Patronymic { get; set; }
-        
+
 
         /// <summary>
         /// Идентификатор услуги, предоставляемой врачом

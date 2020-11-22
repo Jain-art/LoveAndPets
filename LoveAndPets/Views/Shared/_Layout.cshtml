@@ -27,16 +27,16 @@
                         @if (User.Identity.Name == "ADMIN")
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Animal" asp-action="AddType">Добавить новый тип животного</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Animal" asp-action="AddType">Добавить тип животного</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Service" asp-action="AddService">Добавить новую услугу</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Service" asp-action="AddService">Добавить услугу</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Breed" asp-action="AddBreed">Добавить новую породу</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Breed" asp-action="AddBreed">Добавить породу</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Doctor" asp-action="AddDoctor">Добавить нового доктора</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Doctor" asp-action="AddDoctor">Добавить доктора</a>
                             </li>
                         }
                         @if (User.Identity.IsAuthenticated)

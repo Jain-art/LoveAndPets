@@ -1,27 +1,34 @@
-﻿using LoveAndPets.Model.Common;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace LoveAndPets.Domain.Model.Common
+﻿
+using System.ComponentModel.DataAnnotations;
+namespace LoveAndPets.ViewModels.Account
 {
     /// <summary>
-    /// Анкета питомцев
+    /// Регистрация питомца
     /// </summary>
-    public class Pets : Entity
+    public class NewPetViewModel
     {
         /// <summary>
-        /// Кличка животого
+        /// Кличка питомца
         /// </summary>
+        [Required]
+        [Display(Name = "Кличка питомца")]
         public string PetName { get; set; }
         /// <summary>
         /// Индентификатор хозяина животного
         /// </summary>
+        [Required]
+        [Display(Name = "Id хозяина")]
         public long EmployeeEntitys { get; set; }
         [ForeignKey("EmployeeEntitys")]
+        [Required]
+        [Display(Name = "Хозяин")]
         public Employee Employee { get; set; }
 
         /// <summary>
-        /// Индентификатор типа животного
+        /// Индентификатор типа питомца
         /// </summary>
+        [Required]
+        [Display(Name = "Id типа питомца")]
         public long AnimalsEntitys { get; set; }
         [ForeignKey("AnimalsEntitys")]
         public Animals Animals { get; set; }
@@ -29,9 +36,13 @@ namespace LoveAndPets.Domain.Model.Common
         /// <summary>
         /// Индентификатор породы животного
         /// </summary>
+        [Required]
+        [Display(Name = "Id породы питомца")]
         public long BreedsEntitys { get; set; }
         [ForeignKey("BreedsEntitys")]
-        public Breeds Breeds { get; set; }
 
+        [Required]
+        [Display(Name = "Название породы")]
+        public Breeds Breeds { get; set; }
     }
 }

@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LoveAndPets.Migrations
 {
     [DbContext(typeof(AnimalDbContext))]
-    [Migration("20201121103111_init-v")]
-    partial class initv
+    [Migration("20201121105416_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -33,7 +33,7 @@ namespace LoveAndPets
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AnimalDbContext>(options =>
-                options.UseNpgsql("Server=127.0.0.1;Port=5432;User Id=postgres;Password=1234;Database=LoveAndPets;"));
+                options.UseNpgsql("Server=127.0.0.1;Port=5432;User Id=postgres;Password=coraline13;Database=LoveAndPets;"));
 
             services.AddControllersWithViews();
 

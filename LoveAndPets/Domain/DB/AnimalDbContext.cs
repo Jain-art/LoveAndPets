@@ -2,7 +2,6 @@
 using LoveAndPets.Model.Common;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-//using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -37,6 +36,8 @@ namespace LoveAndPets.Domain.DB
 
         public DbSet<Breeds> Breeds { get; set; }
 
+        public DbSet<Pets> Pets { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -45,9 +46,7 @@ namespace LoveAndPets.Domain.DB
             {
                 x.HasOne(y => y.Employee)
                 .WithOne()
-                //.HasForeignKey<User>("EmployeeId")
                 .IsRequired(true);
-               // x.HasIndex("EmployeeId").IsUnique(true);
             });
             #region Pets
             modelBuilder.Entity<Pets>(b =>
@@ -140,21 +139,7 @@ namespace LoveAndPets.Domain.DB
             });
             #endregion
 
-            /*
-            #region BlogPost
-            modelBuilder.Entity<BlogPost>(b =>
-            {
-                b.ToTable("BlogPosts");
-                EntityId(b);
-                b.Property(x => x.Created).HasColumnName("Created")
-                .IsRequired();
-                b.Property(x => x.Title).HasColumnName("Date")
-                .IsRequired();
-                b.HasOne(x => x.Owner).WithMany().IsRequired();
-            });
-            #endregion
-            */
-        }
+            }
         
         private static void EntityId<TEntity>(EntityTypeBuilder<TEntity> builder)
             where TEntity : Entity
